@@ -586,7 +586,14 @@ async function exportToPng(target, filename) {
                 if (a) { a.style.boxShadow = "none"; a.style.borderRadius = "0"; }
             }
         });
-        const link = document.createElement('a'); link.download = `${filename}.png`; link.href = canvas.toDataURL('image/png'); link.click();
+        const link = document.createElement('a');
+        // Ensure accurate filename with .png extension
+        const safeName = filename.endsWith('.png') ? filename : `${filename}.png`;
+        link.download = safeName;
+        link.href = canvas.toDataURL('image/png', 1.0); // max quality
+        document.body.appendChild(link); // Required for Firefox
+        link.click();
+        document.body.removeChild(link);
     } catch (e) { alert("Download failed. Please try again."); }
 }
 
