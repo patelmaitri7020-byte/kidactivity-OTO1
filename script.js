@@ -580,21 +580,34 @@ async function exportToPng(target, filename) {
     const isT = elements.transparentToggle?.checked || false;
     try {
         const canvas = await html2canvas(target, {
-            scale: 3, backgroundColor: isT ? null : currentState.bgColor, onclone: (doc) => {
+            scale: 3,
+            backgroundColor: isT ? null : currentState.bgColor,
+            onclone: (doc) => {
                 const p = doc.getElementById('puzzle-card'), a = doc.getElementById('answer-card');
                 if (p) { p.style.boxShadow = "none"; p.style.borderRadius = "0"; }
                 if (a) { a.style.boxShadow = "none"; a.style.borderRadius = "0"; }
             }
         });
-        const link = document.createElement('a');
-        // Ensure accurate filename with .png extension
-        const safeName = filename.endsWith('.png') ? filename : `${filename}.png`;
-        link.download = safeName;
-        link.href = canvas.toDataURL('image/png', 1.0); // max quality
-        document.body.appendChild(link); // Required for Firefox
-        link.click();
-        document.body.removeChild(link);
-    } catch (e) { alert("Download failed. Please try again."); }
+
+        // Use toBlob for robust downloading (fixes random filename issues)
+        canvas.toBlob((blob) => {
+            if (!blob) return;
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            // Ensure strictly .png filename
+            const safeName = filename.endsWith('.png') ? filename : `${filename}.png`;
+            link.download = safeName;
+            link.href = url;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }, 'image/png');
+
+    } catch (e) {
+        console.error(e);
+        alert("Download failed. Please try again.");
+    }
 }
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
