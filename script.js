@@ -589,25 +589,17 @@ async function exportToPng(target, filename) {
             }
         });
 
-        // Use toBlob for robust downloading (fixes random filename issues)
-        canvas.toBlob((blob) => {
-            if (!blob) return;
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            // Ensure strictly .png filename
-            const safeName = filename.endsWith('.png') ? filename : `${filename}.png`;
-            link.download = safeName;
-            link.href = url;
-            document.body.appendChild(link);
+        // Revert to Data URL for file:// protocol compatibility
+        // This fixes the "random filename" issue on local files
+        const dataUrl = canvas.toDataURL('image/png');
 
-            // Delay click to ensure browser registers the download attribute
-            setTimeout(() => {
-                link.click();
-                document.body.removeChild(link);
-                // Delay revoke to ensure download starts before URL is lost
-                setTimeout(() => URL.revokeObjectURL(url), 2000);
-            }, 100);
-        }, 'image/png');
+        const link = document.createElement('a');
+        const safeName = filename.endsWith('.png') ? filename : `${filename}.png`;
+        link.download = safeName;
+        link.href = dataUrl;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
 
     } catch (e) {
         console.error(e);
