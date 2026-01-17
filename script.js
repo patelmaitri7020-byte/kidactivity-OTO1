@@ -535,7 +535,10 @@ function renderWordSearch(words) {
     }));
     const list = document.createElement('div');
     list.className = "mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 w-full px-12";
-    sol.forEach(w => { list.innerHTML += `<div class="bg-indigo-50 px-4 py-2 rounded-full text-indigo-600 font-extrabold text-sm text-center">◽ ${w}</div>`; addAnswerItem(w); });
+    sol.forEach(w => {
+        list.innerHTML += `<div class="bg-indigo-50 px-4 py-2 rounded-full text-indigo-600 font-extrabold text-sm text-center flex items-center justify-center gap-2"><span class="text-xl">${WORD_MAP[w] || "🔹"}</span><span>${w}</span></div>`;
+        addAnswerItem(w);
+    });
     elements.cardContent.appendChild(gEl);
     elements.cardContent.appendChild(list);
 }
