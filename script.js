@@ -441,7 +441,7 @@ function renderScramble(words) {
         do { scrambled = solution.split('').sort(() => 0.5 - Math.random()).join(''); } while (scrambled === solution && solution.length > 1);
         const row = document.createElement('div');
         row.className = "flex items-center gap-12";
-        row.innerHTML = `<div class="relative flex-1 text-center text-slate-800 font-bold italic text-4xl min-h-[60px] flex items-center justify-center"><span class="absolute -left-10 -top-4 text-5xl">${WORD_MAP[word] || "✨"}</span>${scrambled}</div><div class="flex-[1.5] border-b-2 border-slate-400 h-16"></div>`;
+        row.innerHTML = `<div class="flex-1 text-center text-slate-800 font-bold italic text-4xl min-h-[60px] flex items-center justify-center gap-6"><span class="text-5xl">${WORD_MAP[word] || "✨"}</span><span>${scrambled}</span></div><div class="flex-[1.5] border-b-2 border-slate-400 h-16"></div>`;
         container.appendChild(row);
         addAnswerItem(`${i + 1}. ${scrambled} = ${solution}`);
     });
