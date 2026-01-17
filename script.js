@@ -462,15 +462,23 @@ function renderVowels(words) {
         if (maskCount >= vIdx.length && vIdx.length > 1 && currentState.ageGroup !== '11-13') maskCount = vIdx.length - 1;
         let toMask = vIdx.sort(() => 0.5 - Math.random()).slice(0, maskCount);
         const wrap = document.createElement('div');
-        wrap.className = "bg-white p-8 rounded-[32px] border-2 border-slate-50 shadow-sm relative pt-12 flex flex-col items-center";
-        wrap.innerHTML = `<span class="absolute left-1/2 -top-8 -translate-x-1/2 text-5xl bg-white p-2 rounded-full shadow-md">${WORD_MAP[word] || "✨"}</span>`;
+        // Changed to flex row layout to prevent overlap and improve readability
+        wrap.className = "bg-white p-6 rounded-[24px] border-2 border-slate-100 shadow-sm flex items-center gap-6";
+
+        // Icon is now a static flex item, not absolute
+        wrap.innerHTML = `<span class="text-6xl min-w-[80px] text-center">${WORD_MAP[word] || "✨"}</span>`;
+
         const display = document.createElement('div');
-        display.className = "text-4xl font-black text-slate-800 tracking-widest flex items-center border-b-4 border-slate-700 h-20";
+        display.className = "flex-1 text-4xl font-black text-slate-800 tracking-widest flex items-center justify-center h-16 bg-slate-50 rounded-xl px-4";
         chars.forEach((c, idx) => {
             if (toMask.includes(idx)) {
-                const s = document.createElement('span'); s.className = "w-8 border-b-4 border-slate-300 mx-1 mb-1 h-10";
+                // Improved writing line style
+                const s = document.createElement('span');
+                s.className = "w-10 border-b-4 border-slate-400 mx-1 h-10 inline-block";
                 display.appendChild(s);
-            } else { display.appendChild(document.createTextNode(c)); }
+            } else {
+                display.appendChild(document.createTextNode(c));
+            }
         });
         wrap.appendChild(display);
         container.appendChild(wrap);
