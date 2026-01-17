@@ -469,21 +469,21 @@ function renderVowels(words) {
         let maskCount = Math.max(1, Math.ceil(vIdx.length * maskProb));
         if (maskCount >= vIdx.length && vIdx.length > 1 && currentState.ageGroup !== '11-13') maskCount = vIdx.length - 1;
         let toMask = vIdx.sort(() => 0.5 - Math.random()).slice(0, maskCount);
+
         const wrap = document.createElement('div');
-        // Compact flex row layout
-        wrap.className = "bg-white p-4 rounded-[20px] border-2 border-slate-100 shadow-sm flex items-center gap-4";
+        // Logic: specific long words get full width to prevent cutting off
+        const isLongWord = solution.length > 7;
+        wrap.className = `bg-white p-4 rounded-[20px] border-2 border-slate-100 shadow-sm flex items-center gap-4 ${isLongWord ? 'col-span-2' : 'col-span-1'}`;
 
         // Static Icon
         wrap.innerHTML = `<span class="text-5xl min-w-[60px] text-center">${WORD_MAP[word] || "✨"}</span>`;
 
         const display = document.createElement('div');
-        // Allow wrapping for very long words, centered text
         display.className = "flex-1 text-3xl font-black text-slate-800 tracking-wide flex flex-wrap items-center justify-center min-h-[4rem] bg-slate-50 rounded-xl px-4 py-2";
         chars.forEach((c, idx) => {
             if (toMask.includes(idx)) {
-                // Reduced width to w-12 (48px) and margin to mx-1 to prevent overcrowding
                 const s = document.createElement('span');
-                s.className = "w-12 border-b-4 border-slate-400 mx-1 h-8 inline-block mb-1";
+                s.className = "w-10 border-b-4 border-slate-400 mx-1 h-8 inline-block mb-1";
                 display.appendChild(s);
             } else {
                 display.appendChild(document.createTextNode(c));
@@ -493,7 +493,7 @@ function renderVowels(words) {
         container.appendChild(wrap);
         addAnswerItem(`${i + 1}. ${solution}`);
     });
-    elements.cardContent.appendChild(container); // Fixed: ensure container is appended!
+    elements.cardContent.appendChild(container);
 }
 
 function renderScramble(words) {
