@@ -540,10 +540,10 @@ function renderVowels(words) {
 
         chars.forEach((c, idx) => {
             if (toMask.includes(idx)) {
-                // CLASSIC BLANK LINE STYLE: Transparent bg, dark bottom border
-                const widthClass = solution.length > 9 ? 'w-12 mx-1' : 'w-20 mx-3';
+                // CLASSIC BLANK LINE STYLE: Transparent bg, PURE BLACK bottom border
+                const widthClass = solution.length > 9 ? 'w-14 mx-2' : 'w-24 mx-4';
                 const s = document.createElement('span');
-                s.className = `${widthClass} h-12 border-b-4 border-slate-800 bg-transparent rounded-none inline-block align-middle shrink-0 flex items-end justify-center`;
+                s.className = `${widthClass} h-12 border-b-4 border-black bg-transparent rounded-none inline-block align-middle shrink-0 flex items-end justify-center`;
                 s.innerHTML = "&nbsp;";
                 display.appendChild(s);
             } else {
