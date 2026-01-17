@@ -570,12 +570,11 @@ function renderRiddles(theme, level) {
             reverseCipher[shuffled[i]] = char;
         });
 
-        // Show Decoder Key (Essential for kids to solve it!)
+        // Show Decoder Key (Compact for single page fit)
         const keyBox = document.createElement('div');
-        // Changed to Grid layout to prevent cutting off (7 cols mobile, 13 cols desktop)
-        keyBox.className = "bg-slate-100 p-4 rounded-xl border-2 border-slate-200 grid grid-cols-7 md:grid-cols-13 gap-2 mb-8";
+        keyBox.className = "bg-slate-50 p-3 rounded-xl border border-slate-200 flex flex-wrap justify-center gap-1 mb-6";
         alpha.split('').forEach(char => {
-            keyBox.innerHTML += `<div class="flex flex-col items-center bg-white border border-slate-300 rounded px-2 py-1 min-w-[30px]"><span class="text-xs text-slate-400 font-bold">${char}</span><span class="text-lg font-black text-slate-800">${cipher[char]}</span></div>`;
+            keyBox.innerHTML += `<div class="flex flex-col items-center bg-white border border-slate-300 rounded w-8 py-1"><span class="text-[10px] text-slate-400 font-bold">${char}</span><span class="text-sm font-black text-slate-800">${cipher[char]}</span></div>`;
         });
         container.appendChild(keyBox);
 
@@ -586,16 +585,17 @@ function renderRiddles(theme, level) {
             const encrypted = original.split('').map(c => cipher[c] || c).join(''); // Keep spaces/punctuation
 
             const item = document.createElement('div');
-            item.className = "p-8 bg-blue-50 rounded-[32px] border-2 border-blue-100 shadow-sm relative";
+            // Reduced padding and margins for compact fit
+            item.className = "p-6 bg-blue-50 rounded-[24px] border-2 border-blue-100 shadow-sm relative";
             item.innerHTML = `
-                <div class="text-xs font-black text-blue-300 uppercase mb-4 tracking-widest">Message #${i + 1}</div>
-                <div class="text-3xl font-bold text-slate-700 leading-normal tracking-wide mb-6 font-mono bg-white p-4 rounded-xl border border-blue-100 text-center">${encrypted}</div>
-                <div class="space-y-2">
-                    <div class="flex gap-2 justify-center flex-wrap">
+                <div class="text-[10px] font-black text-blue-300 uppercase mb-2 tracking-widest">Message #${i + 1}</div>
+                <div class="text-xl font-bold text-slate-700 leading-normal tracking-wide mb-4 font-mono bg-white p-3 rounded-lg border border-blue-100 text-center">${encrypted}</div>
+                <div class="space-y-1">
+                    <div class="flex gap-1 justify-center flex-wrap">
                        ${encrypted.split('').map(c =>
                 /[A-Z]/.test(c)
-                    ? `<div class="flex flex-col items-center gap-1"><div class="w-8 h-8 border-b-4 border-slate-300"></div><div class="text-sm font-bold text-slate-400">${c}</div></div>`
-                    : `<div class="w-4"></div>` // Space
+                    ? `<div class="flex flex-col items-center gap-0"><div class="w-6 h-6 border-b-2 border-slate-300"></div><div class="text-xs font-bold text-slate-400 mt-1">${c}</div></div>`
+                    : `<div class="w-3"></div>` // Space
             ).join('')}
                     </div>
                 </div>
