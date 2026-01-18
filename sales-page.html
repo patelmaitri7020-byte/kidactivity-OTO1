@@ -5,39 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kids' Brain-Booster Activity Creation Engine - Create & Sell Puzzle Books Fast!</title>
-    <!-- Google Fonts for Modern, Trustworthy Typography -->
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Outfit:wght@400;700;900&display=swap"
         rel="stylesheet">
     <style>
-        /* --- CORE VARIABLES --- */
         :root {
-            /* Primary Colors - Trustworthy & High-Converting */
             --primary: #4F46E5;
-            /* Indigo/Blurple - Modern Tech/Trust */
             --primary-dark: #4338CA;
-            --accent: #F59E0B;
-            /* Amber/Orange - Action & Warmth */
-            --accent-hover: #D97706;
-
-            /* Pastel Theme Support */
+            --accent: #FF9F1C;
+            --accent-hover: #F97316;
             --bg-soft: #F0F9FF;
-            /* Very light blue */
-            --bg-card: #FFFFFF;
-            --text-main: #1E293B;
-            /* Slate 800 */
-            --text-muted: #64748B;
-            /* Slate 500 */
-
-            /* Spacing & Layout */
-            --container-max: 1000px;
+            --text-main: #0F172A;
+            --text-muted: #475569;
+            --container-max: 900px;
             --radius-btn: 50px;
             --radius-card: 20px;
-            --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.12);
         }
 
-        /* --- GLOBAL RESETS --- */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -46,7 +30,6 @@
 
         body {
             font-family: 'Nunito', sans-serif;
-            /* Friendly, readable, round */
             color: var(--text-main);
             background-color: #F8FAFC;
             line-height: 1.6;
@@ -57,7 +40,6 @@
             max-width: 100%;
             height: auto;
             display: block;
-            border-radius: 12px;
         }
 
         a {
@@ -70,29 +52,21 @@
             list-style: none;
         }
 
-        /* --- TYPOGRAPHY --- */
         h1,
         h2,
         h3,
         h4 {
             font-family: 'Outfit', sans-serif;
-            /* Bold, punchy headlines */
             line-height: 1.2;
             margin-bottom: 1rem;
         }
 
-        .text-gradient {
-            background: linear-gradient(135deg, var(--primary) 0%, #8B5CF6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
         .text-accent {
-            color: var(--accent);
+            color: #E11D48;
         }
 
-        .font-black {
-            font-weight: 900;
+        .text-highlight {
+            color: var(--primary);
         }
 
         .wrapper {
@@ -104,95 +78,75 @@
         /* --- BUTTONS --- */
         .btn {
             display: inline-block;
-            padding: 1.25rem 3rem;
-            font-size: 1.25rem;
-            font-weight: 800;
+            padding: 1.5rem 3.5rem;
+            font-size: 1.5rem;
+            font-weight: 900;
             color: #fff;
-            background: linear-gradient(to right, var(--accent), #F97316);
+            background: linear-gradient(to bottom, #FF9F1C, #F97316);
+            border-bottom: 6px solid #C2410C;
             border-radius: var(--radius-btn);
-            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             cursor: pointer;
-            border: none;
-            text-align: center;
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
+            text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(249, 115, 22, 0.4);
+            transform: translateY(-2px);
+            filter: brightness(1.1);
         }
 
-        .btn-pulse {
-            animation: pulse-orange 2s infinite;
+        .btn:active {
+            transform: translateY(2px);
+            border-bottom-width: 2px;
+            margin-top: 4px;
         }
 
-        @keyframes pulse-orange {
-            0% {
-                box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.7);
-            }
-
-            70% {
-                box-shadow: 0 0 0 15px rgba(249, 115, 22, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
-            }
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            padding: 6rem 0 4rem;
-            text-align: center;
-            background: radial-gradient(circle at top, #EFF6FF 0%, #fff 100%);
-            border-bottom: 2px solid #E2E8F0;
-        }
-
-        .badge {
-            display: inline-block;
-            background: #DEF7EC;
-            color: #03543F;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid #BCF0DA;
-        }
-
-        .headline {
-            font-size: 3.5rem;
-            max-width: 900px;
-            margin: 0 auto 1.5rem;
-        }
-
-        .subheadline {
-            font-size: 1.35rem;
-            color: var(--text-muted);
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            font-weight: 600;
-        }
-
-        .video-container {
+        /* --- LAPTOP DISPLAY --- */
+        .laptop-wrapper {
+            max-width: 860px;
+            margin: 2rem auto 4rem;
             position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            border: 8px solid #fff;
+        }
+
+        .laptop-screen-outer {
+            background: #1e1e1e;
+            padding: 15px 15px 25px 15px;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .laptop-camera {
+            width: 8px;
+            height: 8px;
+            background: #333;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            position: relative;
+        }
+
+        .laptop-camera::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 4px;
+            height: 4px;
+            background: #0f0;
+            opacity: 0.5;
+            border-radius: 50%;
         }
 
         .video-box {
             position: relative;
             padding-bottom: 56.25%;
-            /* 16:9 Aspect Ratio */
             height: 0;
-            overflow: hidden;
             background: #000;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 2px solid #000;
         }
 
         .video-box iframe {
@@ -203,252 +157,173 @@
             height: 100%;
         }
 
-        /* --- AGITATION (PAIN) SECTION --- */
-        .pain-section {
-            padding: 5rem 0;
-            background: #FFF1F2;
-            /* Very light red hue */
+        .laptop-base {
+            height: 25px;
+            background: #cdd3dc;
+            border-radius: 0 0 20px 20px;
+            position: relative;
+            z-index: 2;
         }
 
-        .pain-grid {
+        .laptop-base::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 12px;
+            background: #aab2bd;
+            border-radius: 0 0 10px 10px;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            padding: 4rem 0 6rem;
+            text-align: center;
+            background: linear-gradient(180deg, #fff 0%, #F0F9FF 100%);
+        }
+
+        .headline {
+            font-size: 3rem;
+            color: #1e293b;
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .subheadline {
+            font-size: 1.25rem;
+            color: #475569;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* --- COMPARISON --- */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 1rem;
+            margin-top: 2rem;
+        }
+
+        .comparison-table th {
+            padding: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .comparison-table td {
+            background: #fff;
+            padding: 1.5rem;
+            font-weight: 600;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table td:first-child {
+            border-left: 1px solid #e2e8f0;
+            border-radius: 10px 0 0 10px;
+            color: #94A3B8;
+        }
+
+        .comparison-table td:last-child {
+            border-right: 1px solid #e2e8f0;
+            border-radius: 0 10px 10px 0;
+            border-color: #DEF7EC;
+            /* Green tint */
+            background: #F3FAF7;
+            color: #047857;
+        }
+
+        .col-hard {
+            width: 45%;
+        }
+
+        .col-easy {
+            width: 45%;
+            border: 3px solid #10B981 !important;
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.15);
+            border-radius: 10px !important;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* --- BONUSES --- */
+        .bonus-card {
+            background: #fff;
+            border: 2px dashed #F59E0B;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bonus-tag {
+            background: #F59E0B;
+            color: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0.5rem 1.5rem;
+            font-weight: 800;
+            border-radius: 0 0 20px 0;
+        }
+
+        /* --- IMAGES SECTION --- */
+        .mockup-container {
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .mockup-container img {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-radius: 20px;
+            margin: 0 auto;
+        }
+
+        .proof-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .pain-list li {
-            position: relative;
-            padding-left: 2.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: #9F1239;
-        }
-
-        .pain-list li::before {
-            content: '❌';
-            position: absolute;
-            left: 0;
-            top: 2px;
-        }
-
-        /* --- SOLUTION SECTION --- */
-        .solution-section {
-            padding: 6rem 0;
-            background: #fff;
-            text-align: center;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 4rem;
+            margin-top: 2rem;
         }
 
-        .feature-card {
-            background: #fff;
-            padding: 2.5rem;
-            border-radius: var(--radius-card);
-            border: 2px solid #F1F5F9;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: #C7D2FE;
-            box-shadow: var(--shadow-hover);
-        }
-
-        .card-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            display: inline-block;
-        }
-
-        .feature-title {
-            font-size: 1.25rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .feature-desc {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
-
-        .check-list li {
-            position: relative;
-            padding-left: 2rem;
-            margin-bottom: 0.75rem;
-            text-align: left;
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-
-        .check-list li::before {
-            content: '✅';
-            position: absolute;
-            left: 0;
-        }
-
-        /* --- HOW IT WORKS --- */
-        .steps-section {
-            padding: 6rem 0;
-            background: #F8FAFC;
-        }
-
-        .step-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 2rem;
-            margin-top: 4rem;
-            flex-wrap: wrap;
-        }
-
-        .step-item {
-            flex: 1;
-            min-width: 250px;
-            text-align: center;
-            position: relative;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 900;
-            margin: 0 auto 1.5rem;
-            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
-        }
-
-        /* --- SOCIAL PROOF --- */
-        .proof-section {
-            padding: 6rem 0;
-            background: #fff;
-            text-align: center;
-        }
-
-        .proof-img-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        /* --- PRICING CARD --- */
-        .pricing-section {
-            padding: 6rem 0 8rem;
-            background: linear-gradient(180deg, #EFF6FF 0%, #DBEAFE 100%);
-            text-align: center;
-        }
-
-        .price-card {
+        /* --- PRICING --- */
+        .price-box {
             background: #fff;
             max-width: 600px;
             margin: 0 auto;
             border-radius: 30px;
-            padding: 4rem 2rem;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(79, 70, 229, 0.15);
+            border: 4px solid #4F46E5;
             position: relative;
-            overflow: hidden;
-            border: 4px solid #fff;
         }
 
-        .price-ribbon {
-            background: #F43F5E;
-            color: #fff;
-            padding: 0.5rem 3rem;
-            position: absolute;
-            top: 25px;
-            right: -35px;
-            transform: rotate(45deg);
-            font-weight: 800;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
-
-        .old-price {
-            font-size: 1.5rem;
-            color: #94A3B8;
-            text-decoration: line-through;
-            font-weight: 700;
-        }
-
-        .new-price {
-            font-size: 5rem;
-            font-weight: 900;
-            color: var(--text-main);
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-
-        .one-time {
-            color: var(--text-muted);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 2rem;
-            display: block;
-        }
-
-        .stack-list {
-            text-align: left;
-            margin: 2rem auto;
-            max-width: 400px;
-            background: #F1F5F9;
-            padding: 2rem;
-            border-radius: 16px;
-        }
-
-        .stack-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            border-bottom: 1px dashed #CBD5E1;
-            padding-bottom: 0.5rem;
-        }
-
-        .stack-item:last-child {
-            border: none;
-            margin-bottom: 0;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background: #0F172A;
-            color: #94A3B8;
-            padding: 4rem 0;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        /* Mobile Resp */
         @media (max-width: 768px) {
             .headline {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
 
-            .pain-grid {
+            .proof-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
             }
 
-            .step-container {
-                flex-direction: column;
+            .laptop-wrapper {
+                transform: scale(0.95);
+                margin-bottom: 2rem;
             }
 
-            .price-card {
-                padding: 2rem 1.5rem;
+            .comparison-table {
+                display: block;
+            }
+
+            .comparison-table tbody,
+            .comparison-table tr,
+            .comparison-table td {
+                display: block;
+                width: 100%;
             }
         }
     </style>
@@ -456,246 +331,209 @@
 
 <body>
 
-    <!-- HERO SECTION -->
+    <!-- HEADER / HERO -->
     <header class="hero">
         <div class="wrapper">
-            <div class="badge">🔥 New for 2026: No-Code Puzzle Builder</div>
-            <h1 class="headline">Create <span class="text-gradient">Profitable Kids Activity Books</span> in Minutes —
-                Even If You’ve Never Published Before</h1>
-            <p class="subheadline">Turn simple puzzles into evergreen income using ready-made themes, age-wise words,
-                and printable pages kids actually love.</p>
+            <h1 class="headline">Stop Struggling. Start Publishing.<br><span class="text-highlight">The "Cheat Code" for
+                    Kids Puzzle Books 🚀</span></h1>
+            <p class="subheadline">Generate ready-to-sell activity pages in seconds. <strong>Zero design skills. Zero
+                    research. 100% Profit.</strong></p>
 
-            <!-- Video Placeholder -->
-            <div class="video-container">
-                <div class="video-box">
-                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Yol7OTkKP9M"
-                        title="Puzzle Demo" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen></iframe>
+            <!-- LAPTOP VIDEO FRAME -->
+            <div class="laptop-wrapper">
+                <div class="laptop-screen-outer">
+                    <div class="laptop-camera"></div>
+                    <div class="video-box">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Yol7OTkKP9M"
+                            title="Puzzle Demo" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
                 </div>
+                <div class="laptop-base"></div>
             </div>
 
-            <!-- CTA -->
-            <a href="#pricing" class="btn btn-pulse">Get Instant Access for Just $21</a>
-            <p style="margin-top: 1rem; font-size: 0.85rem; color: #94A3B8; font-weight: 600;">30-Day Money Back
-                Guarantee • Instant Download</p>
+            <a href="#offer" class="btn">Get Instant Access - Just $21</a>
+            <p style="margin-top: 1rem; color: #64748B; font-size: 0.9rem;">⚠️ Price increasing soon</p>
 
-            <!-- Mockup Image - Fixed Link -->
-            <div style="margin-top: 4rem;">
-                <!-- Using raw.githubusercontent for reliability -->
-                <img src="https://raw.githubusercontent.com/maitriukawala-sketch/puzzle-sales-page/main/mockup.png"
-                    alt="Laptop showing puzzle software"
-                    style="margin: 0 auto; box-shadow: 0 30px 60px -15px rgba(0,0,0,0.15);">
+            <div class="mockup-container">
+                <!-- CORRECT GITHUB RAW LINK -->
+                <img src="https://raw.githubusercontent.com/maitriukawala-sketch/puzzle-sales-page/refs/heads/main/mockup%20puzzle.png"
+                    alt="Software Mockup" width="800">
             </div>
         </div>
     </header>
 
-    <!-- PAIN / PROBLEM SECTION (UPDATED) -->
-    <section class="pain-section">
+    <!-- PAIN / PROBLEM -->
+    <section style="background: #FFF1F2; padding: 5rem 0;">
         <div class="wrapper">
-            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 2rem;">Why Most Beginners <span
-                    style="color: #E11D48;">FAIL</span> at KDP & Printables...</h2>
-            <p
-                style="text-align: center; font-size: 1.25rem; color: #64748B; margin-bottom: 4rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-                It’s not because you aren't smart. It's because the "traditional way" is <strong>exhausting and
-                    complicated.</strong></p>
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">Why 90% of KDP Authors <span
+                    class="text-accent">GIVE UP</span> in Week 1</h2>
 
-            <div class="pain-grid">
-                <!-- Pain Point 1 -->
-                <div style="text-align: center;">
-                    <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=600"
-                        alt="Stressed person searching for words"
-                        style="width: 100%; height: 250px; object-fit: cover; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); margin-bottom: 1.5rem;">
-                    <h3 style="color: #9F1239; font-size: 1.5rem; margin-bottom: 1rem;">🛑 "What Words Do I Use?"</h3>
-                    <p style="color: #64748B;">Searching Google for "kid safe words" takes hours. One wrong word gets
-                        your book <strong>BANNED</strong> from Amazon.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1513159446162-54eb8bdaa79b?auto=format&fit=crop&q=80&w=600"
+                        style="border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" alt="Stressed creator">
                 </div>
-                <!-- Pain Point 2 -->
-                <div style="text-align: center;">
-                    <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=600"
-                        alt="Confused person designing"
-                        style="width: 100%; height: 250px; object-fit: cover; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); margin-bottom: 1.5rem;">
-                    <h3 style="color: #9F1239; font-size: 1.5rem; margin-bottom: 1rem;">🛑 Design Nightmares</h3>
-                    <p style="color: #64748B;">Aligning 100 letters in a grid perfectly? It’s a tedious nightmare that
-                        makes you want to quit.</p>
-                </div>
-            </div>
-
-            <!-- Pain Point 3 (Full Width) -->
-            <div
-                style="max-width: 700px; margin: 3rem auto 0; background: #fff; padding: 2rem; border-radius: 20px; border: 2px dashed #FECDD3; text-align: center;">
-                <h3 style="color: #9F1239; margin-bottom: 0.5rem; font-size: 1.8rem;">🛑 Total Burnout</h3>
-                <p style="font-size: 1.2rem; color: #64748B;">Most people spend <strong>3 weeks</strong> making ONE
-                    book. <br>Then it sells 2 copies. <br>That's earning <span
-                        style="background: #FFE4E6; padding: 0 5px; font-weight: bold;">$0.10 per hour. 😭</span></p>
-            </div>
-        </div>
-    </section>
-
-    <!-- SOLUTION INTRO -->
-    <section class="solution-section">
-        <div class="wrapper">
-            <h2 style="font-size: 2.5rem; max-width: 800px; margin: 0 auto 1rem;">Stop Guessing. <span
-                    class="text-accent">Start Publishing.</span></h2>
-            <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 3rem;">
-                The <strong>Kids’ Brain-Booster Activity Creation Engine</strong> solves everything by giving you a
-                "Done-For-You" factory:
-            </p>
-
-            <!-- FEATURES GRID -->
-            <div class="feature-grid">
-                <!-- Feature 1 -->
-                <div class="feature-card">
-                    <span class="card-icon">🦄</span>
-                    <h3 class="feature-title">50 Ready-Made Themes</h3>
-                    <p class="feature-desc">Space, Dinosaurs, Emotions, Kindness, Animals, and more. Hand-picked for
-                        growth & learning.</p>
-                    <ul class="check-list" style="margin-top: 1rem;">
-                        <li>No research needed</li>
-                        <li>Evergreen topics</li>
-                    </ul>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="feature-card">
-                    <span class="card-icon">📊</span>
-                    <h3 class="feature-title">Age-Wise Word Lists</h3>
-                    <p class="feature-desc">Engineered for specifically for development stages: Explorer (5-7), Hero
-                        (8-10), and Master (11-13).</p>
-                    <ul class="check-list" style="margin-top: 1rem;">
-                        <li>Kid-Safe Vocabulary</li>
-                        <li>Perfect difficulty level</li>
-                    </ul>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="feature-card">
-                    <span class="card-icon">🧩</span>
-                    <h3 class="feature-title">5 Puzzle Types</h3>
-                    <p class="feature-desc">Create Word Scramble, Missing Letters, Brain Boosters, Logic Puzzles, and
-                        more instantly.</p>
-                    <ul class="check-list" style="margin-top: 1rem;">
-                        <li>Auto-Generated Answers</li>
-                        <li>Ready for Worksheets</li>
-                    </ul>
-                </div>
-
-                <!-- Feature 4 -->
-                <div class="feature-card">
-                    <span class="card-icon">🎨</span>
-                    <h3 class="feature-title">Pro Printable Design</h3>
-                    <p class="feature-desc">Soft pastel backgrounds, kid-friendly layouts, and clean typography that
-                        parents trust.</p>
-                    <ul class="check-list" style="margin-top: 1rem;">
-                        <li>No designer needed</li>
-                        <li>Professional look</li>
+                <div>
+                    <h3 style="color: #9F1239; font-size: 1.8rem;">❌ The "Manual" Trap</h3>
+                    <ul style="font-size: 1.15rem; color: #475569;">
+                        <li style="margin-bottom: 1rem;">💀 <strong>Hours of Research:</strong> Trying to find "safe"
+                            words for 3rd graders without getting your account banned.</li>
+                        <li style="margin-bottom: 1rem;">💀 <strong>Canva Nightmare:</strong> Manually dragging 100+
+                            letters into little grid boxes. One mistake means starting over.</li>
+                        <li style="margin-bottom: 1rem;">💀 <strong>Expensive Freelancers:</strong> Paying $50 per page
+                            on Fiverr? Forget it.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- HOW IT WORKS -->
-    <section class="steps-section">
+    <!-- SOLUTION -->
+    <section style="background: #fff; padding: 5rem 0;">
         <div class="wrapper">
-            <h2 style="text-align: center; font-size: 2.5rem;">3 Steps to Your First Product</h2>
-            <div class="step-container">
-                <div class="step-item">
-                    <div class="step-number">1</div>
-                    <h3>Choose Topic</h3>
-                    <p style="color: var(--text-muted);">Select puzzle type, age group, and theme from the menu.</p>
+            <h2 style="text-align: center; font-size: 3rem;">There is a <span style="color: #059669;">BETTER WAY</span>
+                ✨</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; font-size: 1.25rem;">Meet the
+                <strong>Kids' Brain-Booster Engine.</strong> It's like having a professional puzzle designer sitting
+                inside your computer.</p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th style="color: #94A3B8;">The Hard Way (Manual)</th>
+                        <th style="color: #059669; font-size: 1.5rem;">The Engine Way (Automated)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Spend 4 hours finding words</td>
+                        <td class="col-easy">✅ 50+ Pre-loaded Themes (Instant)</td>
+                    </tr>
+                    <tr>
+                        <td>Manually check age-safety</td>
+                        <td class="col-easy">✅ "Explorer" to "Master" Age Modes</td>
+                    </tr>
+                    <tr>
+                        <td>Design grids one-by-one</td>
+                        <td class="col-easy">✅ 1-Click Generation</td>
+                    </tr>
+                    <tr>
+                        <td>Forget where the answers are</td>
+                        <td class="col-easy">✅ Auto-Generated Answer Keys</td>
+                    </tr>
+                    <tr>
+                        <td>Result: 1 Book per Month</td>
+                        <td class="col-easy">🚀 Result: 1 Book per Day!</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- BONUSES -->
+    <section style="background: #fff; padding: 5rem 0; border-top: 1px solid #e2e8f0;">
+        <div class="wrapper">
+            <h2 style="text-align: center; margin-bottom: 3rem;">🎁 Wait! I'm Stacking the Value!</h2>
+
+            <div class="bonus-card">
+                <div class="bonus-tag">BONUS #1</div>
+                <h3>50 Ready-to-Profit Themes ($47 Value)</h3>
+                <p>Space, Dinosaurs, Unicorns, Trucks... we’ve included the "Money Making 50" list built right into the
+                    software. Just click and go.</p>
+            </div>
+
+            <div class="bonus-card">
+                <div class="bonus-tag">BONUS #2</div>
+                <h3>Smart Answer Key Generator ($27 Value)</h3>
+                <p>Teachers and parents HATE puzzles without answers. Our engine automatically creates a matching answer
+                    page for every single puzzle.</p>
+            </div>
+
+            <div class="bonus-card">
+                <div class="bonus-tag">BONUS #3</div>
+                <h3>Cover Page Starter Pack ($19 Value)</h3>
+                <p>Not a designer? No problem. Get clean, professional cover templates to wrap up your book in style.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <section style="background: #F8FAFC; padding: 5rem 0;">
+        <div class="wrapper">
+            <h2 style="text-align: center;">See What Real Users Are Saying</h2>
+            <div class="proof-grid">
+                <!-- CORRECT GITHUB RAW LINKS (Space encoded as %20) -->
+                <img src="https://raw.githubusercontent.com/maitriukawala-sketch/puzzle-sales-page/refs/heads/main/review%201.png"
+                    alt="Review 1" style="border: 1px solid #e2e8f0; border-radius: 10px;">
+                <img src="https://raw.githubusercontent.com/maitriukawala-sketch/puzzle-sales-page/refs/heads/main/review%202.png"
+                    alt="Review 2" style="border: 1px solid #e2e8f0; border-radius: 10px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="background: #fff; padding: 5rem 0;">
+        <div class="wrapper" style="max-width: 800px;">
+            <h2 style="text-align: center;">Frequently Asked Questions</h2>
+
+            <details style="margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+                <summary style="cursor: pointer; font-weight: 700; font-size: 1.2rem;">Is this a monthly subscription?
+                </summary>
+                <p style="margin-top: 0.5rem; color: #475569;">No! You pay once and get unlimited access. No hidden
+                    fees.</p>
+            </details>
+
+            <details style="margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+                <summary style="cursor: pointer; font-weight: 700; font-size: 1.2rem;">Do I need to install anything?
+                </summary>
+                <p style="margin-top: 0.5rem; color: #475569;">No, it runs in your browser. However, it's a client-side
+                    tool, meaning you can download the HTML file and run it offline too!</p>
+            </details>
+
+            <details style="margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+                <summary style="cursor: pointer; font-weight: 700; font-size: 1.2rem;">Can I sell the files on Amazon
+                    KDP?</summary>
+                <p style="margin-top: 0.5rem; color: #475569;">Yes! You have full commercial rights to the PUZZLES you
+                    generate. (You cannot resell the software itself).</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- FINAL OFFER -->
+    <section id="offer"
+        style="background: linear-gradient(135deg, #4F46E5 0%, #312E81 100%); padding: 6rem 0; color: #fff;">
+        <div class="wrapper">
+            <div class="price-box">
+                <div
+                    style="position: absolute; top: -20px; right: -20px; background: #EF4444; color: #fff; padding: 10px 20px; transform: rotate(10deg); font-weight: 900; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+                    SAVE $76 TODAY</div>
+                <h2 style="color: #0F172A; text-align: center;">The "Brain-Booster" Launch Deal</h2>
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <span style="font-size: 1.5rem; color: #94A3B8; text-decoration: line-through;">Total Value:
+                        $97</span><br>
+                    <span style="font-size: 6rem; font-weight: 900; color: #0F172A; line-height: 1;">$21</span><br>
+                    <span style="color: #0F172A; font-weight: 700;">ONE-TIME PAYMENT</span>
                 </div>
-                <div class="step-item">
-                    <div class="step-number">2</div>
-                    <h3>Generate</h3>
-                    <p style="color: var(--text-muted);">Instantly create puzzle pages with matching answer keys.</p>
-                </div>
-                <div class="step-item">
-                    <div class="step-number">3</div>
-                    <h3>Download & Sell</h3>
-                    <p style="color: var(--text-muted);">Export as PNG/PDF, combine, and upload to Amazon or Etsy.</p>
+
+                <a href="#" class="btn" style="width: 100%; text-align: center;">Get Instant Access Now</a>
+
+                <div style="text-align: center; margin-top: 2rem; color: #64748B;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Stripe_Logo%2C_revised_2016.svg/2560px-Stripe_Logo%2C_revised_2016.svg.png"
+                        style="height: 30px; margin: 0 auto 10px; opacity: 0.5;">
+                    <p>🔒 100% Secure Checkout</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SOCIAL PROOF / USE CASES -->
-    <section class="proof-section">
-        <div class="wrapper">
-            <h2 style="font-size: 2.5rem;">Who Is This For?</h2>
-            <p style="font-size: 1.25rem; margin-bottom: 2rem;">"Kids puzzles are evergreen. Parents buy them every
-                year. This market never dies."</p>
-
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;">
-                <span class="badge" style="background: #EEF2FF; color: #4F46E5; border: none;">Amazon KDP
-                    Publishers</span>
-                <span class="badge" style="background: #FFF1F2; color: #BE123C; border: none;">Etsy Sellers</span>
-                <span class="badge" style="background: #ECFDF5; color: #047857; border: none;">Teachers & Tutors</span>
-                <span class="badge" style="background: #FFF7ED; color: #C2410C; border: none;">Side-Hustlers</span>
-            </div>
-
-            <!-- Review Images from GitHub -->
-            <div class="proof-img-grid">
-                <!-- Using the raw links as requested -->
-                <img src="https://raw.githubusercontent.com/maitriukawala-sketch/puzzle-sales-page/main/review1.png"
-                    alt="Amazon Customer Review 1" style="border: 1px solid #E2E8F0;">
-                <img src="https://raw.githubusercontent.com/maitriukawala-sketch/puzzle-sales-page/main/review2.png"
-                    alt="Amazon Customer Review 2" style="border: 1px solid #E2E8F0;">
-            </div>
-        </div>
-    </section>
-
-    <!-- PRICING SECTION -->
-    <section id="pricing" class="pricing-section">
-        <div class="wrapper">
-            <div class="price-card">
-                <div class="price-ribbon">Best Deal</div>
-                <h2 style="margin-bottom: 0.5rem;">Instant Access</h2>
-                <div class="old-price">$97.00</div>
-                <div class="new-price">$21</div>
-                <span class="one-time">One-Time Payment • No Monthly Fees</span>
-
-                <div class="stack-list">
-                    <div class="stack-item">
-                        <span>50 Themes + Word Lists</span>
-                        <span>$27 Value</span>
-                    </div>
-                    <div class="stack-item">
-                        <span>Puzzle Creation Engine</span>
-                        <span>$55 Value</span>
-                    </div>
-                    <div class="stack-item">
-                        <span>Cover Pages Pack</span>
-                        <span>$15 Value</span>
-                    </div>
-                    <div class="stack-item" style="color: var(--primary); font-weight: 800;">
-                        <span>Total Value</span>
-                        <span>$97.00</span>
-                    </div>
-                </div>
-
-                <a href="#" class="btn btn-pulse" style="width: 100%;">Yes! I Want Instant Access</a>
-
-                <div style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted);">
-                    <p>🔒 Secure 256-bit Encrypted Payment</p>
-                    <p style="margin-top: 0.5rem;">"If you can click a button, you can create a kids activity book."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="wrapper">
-            <p>&copy; 2026 Kids Brain-Booster Engine. All Rights Reserved.</p>
-            <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">Disclaimer: This website is not endorsed by
-                Amazon, Google, or Etsy. Earnings figures are aspirational statements of your earning potential.</p>
-            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center;">
-                <a href="#">Support</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Use</a>
-            </div>
-        </div>
+    <footer style="background: #0F172A; color: #64748B; padding: 4rem 0; text-align: center; font-size: 0.9rem;">
+        <p>&copy; 2026 Puzzle Soft. All Rights Reserved.</p>
+        <p>Earnings Disclaimer: Results vary. Creating books requires effort. This tool makes it easier, but you must
+            still do the work.</p>
     </footer>
 
 </body>
