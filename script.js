@@ -271,7 +271,7 @@ const WORD_MAP = {
     "Zebra": "🦓", "Giraffe": "🦒", "Monkey": "🐒", "Cheetah": "🐆", "Dolphin": "🐬", "Penguin": "🐧", "Panda": "🐼",
     "Kangaroo": "🦘", "Elephant": "🐘", "Crocodile": "🐊", "Hippo": "🦛", "Rhinoceros": "🦏", "Leopard": "🐆", "Buffalo": "🐃",
     // Jungle
-    "Ape": "🦍", "Leaf": "🍃", "Tree": "🌳", "Vine": "🪴", "Ant": "🐜", "Bug": "🪲",
+    "Ape": "🦍", "Leaf": "🍃", "Tree": "🌳", "Vine": "🌿", "Ant": "🐜", "Bug": "🐛",
     "Gorilla": "🦍", "Jaguar": "🐆", "Parrot": "🦜", "Toucan": "🐦", "Sloth": "🦥", "Python": "🐍", "Lizard": "🦎",
     "Chameleon": "🦎", "Rainforest": "🌲", "Tarantula": "🕷️", "Orangutan": "🦧", "Chimpanzee": "🐒", "Canopy": "🌲", "Monsoon": "🌧️",
     // Dinosaurs
