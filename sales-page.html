@@ -4,24 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kids' Brain-Booster Activity Creation Engine - Create & Sell Puzzle Books Fast!</title>
+    <title>Kids' Brain-Booster Activity Creation Engine - The Ultimate Puzzle Builder</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Outfit:wght@400;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Outfit:wght@400;700;900&display=swap"
         rel="stylesheet">
     <style>
         :root {
-            --primary: #4F46E5;
-            --primary-dark: #4338CA;
-            --accent: #FF9F1C;
-            --accent-hover: #F97316;
-            --bg-soft: #F0F9FF;
-            --text-main: #0F172A;
-            --text-muted: #475569;
-            --container-max: 900px;
-            --radius-btn: 50px;
-            --radius-card: 20px;
+            --primary: #4338CA;
+            /* Deep Indigo */
+            --primary-light: #6366F1;
+            --accent: #F59E0B;
+            /* Amber */
+            --danger: #E11D48;
+            /* Rose Red */
+            --success: #10B981;
+            /* Emerald */
+            --bg-page: #F8FAFC;
+            --text-main: #1E293B;
+            --container-width: 850px;
+            /* Narrower for reading */
         }
 
+        /* --- RESET & BASE --- */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -31,8 +35,9 @@
         body {
             font-family: 'Nunito', sans-serif;
             color: var(--text-main);
-            background-color: #F8FAFC;
-            line-height: 1.6;
+            background-color: var(--bg-page);
+            line-height: 1.7;
+            font-size: 18px;
             overflow-x: hidden;
         }
 
@@ -40,81 +45,139 @@
             max-width: 100%;
             height: auto;
             display: block;
+            border-radius: 12px;
         }
 
         a {
             text-decoration: none;
             color: inherit;
-            transition: all 0.3s ease;
         }
 
         ul {
             list-style: none;
         }
 
+        /* --- TYPOGRAPHY --- */
         h1,
         h2,
         h3,
         h4 {
             font-family: 'Outfit', sans-serif;
+            font-weight: 900;
             line-height: 1.2;
             margin-bottom: 1rem;
+            color: #0F172A;
         }
 
-        .text-accent {
-            color: #E11D48;
+        h1 {
+            font-size: 2.8rem;
+            letter-spacing: -1px;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            letter-spacing: -0.5px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+            color: var(--primary);
+            margin-top: 2rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        .text-center {
+            text-align: center;
         }
 
         .text-highlight {
-            color: var(--primary);
+            background: #FEF3C7;
+            padding: 2px 5px;
+            border-radius: 4px;
+            color: #92400E;
+        }
+
+        .text-red {
+            color: var(--danger);
+        }
+
+        .text-green {
+            color: var(--success);
         }
 
         .wrapper {
             width: 90%;
-            max-width: var(--container-max);
+            max-width: var(--container-width);
             margin: 0 auto;
         }
 
         /* --- BUTTONS --- */
         .btn {
             display: inline-block;
-            padding: 1.5rem 3.5rem;
+            background: linear-gradient(to bottom, #FBBF24, #D97706);
+            color: #fff;
+            padding: 1.5rem 3rem;
             font-size: 1.5rem;
             font-weight: 900;
-            color: #fff;
-            background: linear-gradient(to bottom, #FF9F1C, #F97316);
-            border-bottom: 6px solid #C2410C;
-            border-radius: var(--radius-btn);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            border-radius: 60px;
+            box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.5);
+            border-bottom: 6px solid #B45309;
+            transition: transform 0.2s;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
-            text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             filter: brightness(1.1);
         }
 
         .btn:active {
             transform: translateY(2px);
             border-bottom-width: 2px;
-            margin-top: 4px;
         }
 
-        /* --- LAPTOP DISPLAY --- */
-        .laptop-wrapper {
-            max-width: 860px;
+        /* --- SECTIONS --- */
+        .section-white {
+            background: #fff;
+            padding: 4rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-gray {
+            background: #F1F5F9;
+            padding: 4rem 0;
+            border-top: 1px solid #E2E8F0;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .section-alert {
+            background: #FFF1F2;
+            padding: 3rem 0;
+            border-bottom: 2px solid #FECDD3;
+        }
+
+        /* --- LAPTOP MOCKUP (CSS Only) --- */
+        .laptop-container {
             margin: 2rem auto 4rem;
+            max-width: 800px;
             position: relative;
         }
 
-        .laptop-screen-outer {
-            background: #1e1e1e;
-            padding: 15px 15px 25px 15px;
+        .laptop-top {
+            background: #111;
+            padding: 3% 3% 4% 3%;
             border-radius: 20px 20px 0 0;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
             position: relative;
         }
 
@@ -124,32 +187,20 @@
             background: #333;
             border-radius: 50%;
             margin: 0 auto 10px;
-            position: relative;
+            box-shadow: inset 0 0 2px #000;
         }
 
-        .laptop-camera::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            width: 4px;
-            height: 4px;
-            background: #0f0;
-            opacity: 0.5;
-            border-radius: 50%;
-        }
-
-        .video-box {
+        .screen-content {
+            background-color: #000;
             position: relative;
             padding-bottom: 56.25%;
+            /* 16:9 Aspect Ratio */
             height: 0;
-            background: #000;
-            border-radius: 4px;
             overflow: hidden;
-            border: 2px solid #000;
+            border-radius: 4px;
         }
 
-        .video-box iframe {
+        .screen-content iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -157,384 +208,349 @@
             height: 100%;
         }
 
-        .laptop-base {
+        .laptop-bottom {
             height: 25px;
-            background: #cdd3dc;
+            background: linear-gradient(to bottom, #E2E8F0, #CBD5E1);
             border-radius: 0 0 20px 20px;
             position: relative;
-            z-index: 2;
         }
 
-        .laptop-base::after {
+        .laptop-bottom::after {
             content: '';
             position: absolute;
             top: 0;
             left: 50%;
             transform: translateX(-50%);
             width: 120px;
-            height: 12px;
-            background: #aab2bd;
-            border-radius: 0 0 10px 10px;
+            height: 8px;
+            background: #94A3B8;
+            border-radius: 0 0 8px 8px;
         }
 
-        /* --- HERO --- */
-        .hero {
-            padding: 4rem 0 6rem;
-            text-align: center;
-            background: linear-gradient(180deg, #fff 0%, #F0F9FF 100%);
-        }
-
-        .headline {
-            font-size: 3rem;
-            color: #1e293b;
-            max-width: 900px;
-            margin: 0 auto 1.5rem;
-        }
-
-        .subheadline {
-            font-size: 1.25rem;
-            color: #475569;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-
-        /* --- COMPARISON --- */
-        .comparison-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 1rem;
-            margin-top: 2rem;
-        }
-
-        .comparison-table th {
-            padding: 1rem;
-            font-size: 1.25rem;
-        }
-
-        .comparison-table td {
-            background: #fff;
-            padding: 1.5rem;
-            font-weight: 600;
-            border-top: 1px solid #e2e8f0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .comparison-table td:first-child {
-            border-left: 1px solid #e2e8f0;
-            border-radius: 10px 0 0 10px;
-            color: #94A3B8;
-        }
-
-        .comparison-table td:last-child {
-            border-right: 1px solid #e2e8f0;
-            border-radius: 0 10px 10px 0;
-            border-color: #DEF7EC;
-            /* Green tint */
-            background: #F3FAF7;
-            color: #047857;
-        }
-
-        .col-hard {
-            width: 45%;
-        }
-
-        .col-easy {
-            width: 45%;
-            border: 3px solid #10B981 !important;
-            transform: scale(1.02);
-            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.15);
-            border-radius: 10px !important;
-            z-index: 2;
-            position: relative;
-        }
-
-        /* --- BONUSES --- */
-        .bonus-card {
-            background: #fff;
-            border: 2px dashed #F59E0B;
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bonus-tag {
-            background: #F59E0B;
-            color: #fff;
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: 0.5rem 1.5rem;
-            font-weight: 800;
-            border-radius: 0 0 20px 0;
-        }
-
-        /* --- IMAGES SECTION --- */
-        .mockup-container {
-            margin: 4rem 0;
-            text-align: center;
-        }
-
-        .mockup-container img {
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            border-radius: 20px;
-            margin: 0 auto;
-        }
-
-        .proof-grid {
+        /* --- AGE CARDS --- */
+        .age-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
-        /* --- PRICING --- */
-        .price-box {
+        .age-card {
             background: #fff;
-            max-width: 600px;
-            margin: 0 auto;
-            border-radius: 30px;
-            padding: 3rem;
-            box-shadow: 0 20px 60px rgba(79, 70, 229, 0.15);
-            border: 4px solid #4F46E5;
-            position: relative;
+            border: 2px solid #E2E8F0;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
         }
 
-        @media (max-width: 768px) {
-            .headline {
-                font-size: 2rem;
-            }
+        .age-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
 
-            .proof-grid {
-                grid-template-columns: 1fr;
-            }
+        .age-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
 
-            .laptop-wrapper {
-                transform: scale(0.95);
-                margin-bottom: 2rem;
-            }
+        .age-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0F172A;
+        }
 
-            .comparison-table {
-                display: block;
-            }
+        .age-desc {
+            color: #64748B;
+            font-size: 1rem;
+        }
 
-            .comparison-table tbody,
-            .comparison-table tr,
-            .comparison-table td {
-                display: block;
-                width: 100%;
-            }
+        /* --- TESTIMONIALS --- */
+        .proof-img {
+            margin: 2rem auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #E2E8F0;
+        }
+
+        /* --- PRICING BOX --- */
+        .price-panel {
+            background: #fff;
+            border: 4px solid var(--primary);
+            border-radius: 30px;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .price-badge {
+            background: #EF4444;
+            color: #fff;
+            padding: 0.5rem 4rem;
+            position: absolute;
+            top: 25px;
+            right: -40px;
+            transform: rotate(45deg);
+            font-weight: 900;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- HEADER / HERO -->
-    <header class="hero">
-        <div class="wrapper">
-            <h1 class="headline">Stop Struggling. Start Publishing.<br><span class="text-highlight">The "Cheat Code" for
-                    Kids Puzzle Books 🚀</span></h1>
-            <p class="subheadline">Generate ready-to-sell activity pages in seconds. <strong>Zero design skills. Zero
-                    research. 100% Profit.</strong></p>
+    <!-- HERO SECTION -->
+    <header style="background: linear-gradient(180deg, #fff 0%, #EFF6FF 100%); padding-bottom: 6rem;">
+        <div
+            style="background: #111; color: #fff; text-align: center; padding: 0.5rem; font-weight: 700; font-size: 0.9rem;">
+            ⚠️ ATTENTION: Launch Pricing Ending Soon!
+        </div>
 
-            <!-- LAPTOP VIDEO FRAME -->
-            <div class="laptop-wrapper">
-                <div class="laptop-screen-outer">
+        <div class="wrapper" style="margin-top: 4rem;">
+            <h1 class="text-center">Stop Making Puzzles The Hard Way.<br>
+                <span style="color: var(--primary);">Unlock The "Infinite Content" Engine For Kids Books!</span>
+            </h1>
+
+            <p class="text-center" style="font-size: 1.4rem; color: #475569; max-width: 800px; margin: 0 auto 3rem;">
+                Instantly Generate <strong>Market-Ready Logic Puzzles, Word Games, and Brain Teasers</strong> That
+                Parents Love and Kids Can't Resist.
+            </p>
+
+            <!-- LAPTOP VIDEO DISPLAY -->
+            <div class="laptop-container">
+                <div class="laptop-top">
                     <div class="laptop-camera"></div>
-                    <div class="video-box">
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Yol7OTkKP9M"
-                            title="Puzzle Demo" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    <div class="screen-content">
+                        <!-- UPDATED VIDEO EMBED CODE (GENERIC YOUTUBE) -->
+                        <iframe width="100%" height="100%"
+                            src="https://www.youtube.com/embed/Yol7OTkKP9M?rel=0&modestbranding=1"
+                            title="Puzzle Engine Demo" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     </div>
                 </div>
-                <div class="laptop-base"></div>
+                <div class="laptop-bottom"></div>
             </div>
 
-            <a href="#offer" class="btn">Get Instant Access - Just $21</a>
-            <p style="margin-top: 1rem; color: #64748B; font-size: 0.9rem;">⚠️ Price increasing soon</p>
-
-            <div class="mockup-container">
-                <!-- CORRECT GITHUB RAW LINK -->
-                <img src="https://raw.githubusercontent.com/maitriukawala-sketch/puzzle-sales-page/refs/heads/main/mockup%20puzzle.png"
-                    alt="Software Mockup" width="800">
+            <div class="text-center">
+                <a href="#buy-now" class="btn">Get Instant Access Now - $21</a>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #64748B;">Instant Digital Download • Secure
+                    Checkout</p>
             </div>
         </div>
     </header>
 
-    <!-- PAIN / PROBLEM -->
-    <section style="background: #FFF1F2; padding: 5rem 0;">
+    <!-- NARRATIVE SECTION: THE PROBLEM -->
+    <section class="section-alert">
         <div class="wrapper">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">Why 90% of KDP Authors <span
-                    class="text-accent">GIVE UP</span> in Week 1</h2>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
-                <div>
-                    <img src="https://images.unsplash.com/photo-1513159446162-54eb8bdaa79b?auto=format&fit=crop&q=80&w=600"
-                        style="border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" alt="Stressed creator">
-                </div>
-                <div>
-                    <h3 style="color: #9F1239; font-size: 1.8rem;">❌ The "Manual" Trap</h3>
-                    <ul style="font-size: 1.15rem; color: #475569;">
-                        <li style="margin-bottom: 1rem;">💀 <strong>Hours of Research:</strong> Trying to find "safe"
-                            words for 3rd graders without getting your account banned.</li>
-                        <li style="margin-bottom: 1rem;">💀 <strong>Canva Nightmare:</strong> Manually dragging 100+
-                            letters into little grid boxes. One mistake means starting over.</li>
-                        <li style="margin-bottom: 1rem;">💀 <strong>Expensive Freelancers:</strong> Paying $50 per page
-                            on Fiverr? Forget it.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SOLUTION -->
-    <section style="background: #fff; padding: 5rem 0;">
-        <div class="wrapper">
-            <h2 style="text-align: center; font-size: 3rem;">There is a <span style="color: #059669;">BETTER WAY</span>
-                ✨</h2>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; font-size: 1.25rem;">Meet the
-                <strong>Kids' Brain-Booster Engine.</strong> It's like having a professional puzzle designer sitting
-                inside your computer.</p>
-
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th style="color: #94A3B8;">The Hard Way (Manual)</th>
-                        <th style="color: #059669; font-size: 1.5rem;">The Engine Way (Automated)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Spend 4 hours finding words</td>
-                        <td class="col-easy">✅ 50+ Pre-loaded Themes (Instant)</td>
-                    </tr>
-                    <tr>
-                        <td>Manually check age-safety</td>
-                        <td class="col-easy">✅ "Explorer" to "Master" Age Modes</td>
-                    </tr>
-                    <tr>
-                        <td>Design grids one-by-one</td>
-                        <td class="col-easy">✅ 1-Click Generation</td>
-                    </tr>
-                    <tr>
-                        <td>Forget where the answers are</td>
-                        <td class="col-easy">✅ Auto-Generated Answer Keys</td>
-                    </tr>
-                    <tr>
-                        <td>Result: 1 Book per Month</td>
-                        <td class="col-easy">🚀 Result: 1 Book per Day!</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- BONUSES -->
-    <section style="background: #fff; padding: 5rem 0; border-top: 1px solid #e2e8f0;">
-        <div class="wrapper">
-            <h2 style="text-align: center; margin-bottom: 3rem;">🎁 Wait! I'm Stacking the Value!</h2>
-
-            <div class="bonus-card">
-                <div class="bonus-tag">BONUS #1</div>
-                <h3>50 Ready-to-Profit Themes ($47 Value)</h3>
-                <p>Space, Dinosaurs, Unicorns, Trucks... we’ve included the "Money Making 50" list built right into the
-                    software. Just click and go.</p>
-            </div>
-
-            <div class="bonus-card">
-                <div class="bonus-tag">BONUS #2</div>
-                <h3>Smart Answer Key Generator ($27 Value)</h3>
-                <p>Teachers and parents HATE puzzles without answers. Our engine automatically creates a matching answer
-                    page for every single puzzle.</p>
-            </div>
-
-            <div class="bonus-card">
-                <div class="bonus-tag">BONUS #3</div>
-                <h3>Cover Page Starter Pack ($19 Value)</h3>
-                <p>Not a designer? No problem. Get clean, professional cover templates to wrap up your book in style.
+            <h2>The "Screen Time" Crisis is Your Opportunity 📉</h2>
+            <div style="max-width: 700px; margin: 0 auto;">
+                <p>Dear Creator,</p>
+                <p>Parents are desperate. They are watching their kids turn into "iPad Zombies," glued to YouTube and
+                    TikTok for 6+ hours a day. Their attention spans are shrinking. Their critical thinking is fading.
                 </p>
+                <p><strong>The Solution?</strong> Good, old-fashioned PAPER activities.</p>
+                <p>But not just boring worksheets. Parents want <strong>Smart, Gamified, Brain-Boosting Puzzles</strong>
+                    that feel like play but work like school.</p>
+                <p>That's where YOU come in.</p>
+                <p>But there's a problem...</p>
+                <h3 class="text-center text-red">Making These Books is EXHAUSTING!</h3>
+                <ul style="margin-left: 2rem;">
+                    <li>❌ <strong>Finding Words:</strong> You can't just put "random" words. They must be age-safe.</li>
+                    <li>❌ <strong>Designing Grids:</strong> One pixel off and the whole puzzle is ruined.</li>
+                    <li>❌ <strong>Creating Answers:</strong> Manually typing out answer keys takes hours.</li>
+                </ul>
+                <p>Most beginners quit after their first book. It's too much work for too little pay.</p>
+                <p style="font-size: 1.5rem; font-weight: 800; text-align: center; margin-top: 2rem;">Until Now.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE SOLUTION -->
+    <section class="section-white">
+        <div class="wrapper">
+            <h2>Introducing: The Kids' Brain-Booster Engine 🧠</h2>
+            <div class="text-center" style="margin-bottom: 3rem;">
+                <img src="https://raw.githubusercontent.com/maitriukawala-sketch/puzzle-sales-page/main/mockup%20puzzle.png"
+                    alt="Software Internal Interface Mockup" style="box-shadow: 0 20px 40px rgba(0,0,0,0.15);">
+            </div>
+
+            <p class="text-center" style="font-size: 1.3rem;">This isn't just a "tool." It's a complete
+                <strong>Educational Curriculum</strong> in a box.</p>
+            <p>We didn't just throw random code together. We analyzed thousands of best-selling books on Amazon and
+                consulted with educators to build a system that strictly follows <strong>Child Development
+                    Stages</strong>.</p>
+        </div>
+    </section>
+
+    <!-- DEEP DIVE FEATURES -->
+    <section class="section-gray">
+        <div class="wrapper">
+            <h2>Engineered For Every Moral & Mental Stage 📊</h2>
+            <p class="text-center">Most software treats a 5-year-old the same as a 12-year-old. <span
+                    class="text-red">That is a disaster.</span><br>Our engine features 3 Distinct Intelligence Modes:
+            </p>
+
+            <div class="age-grid">
+                <!-- Age 5-7 -->
+                <div class="age-card">
+                    <span class="age-icon">🐣</span>
+                    <h3 class="age-title">Explorer Mode</h3>
+                    <p style="font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">Ages 5 – 7</p>
+                    <p class="age-desc">Focuses on high-frequency "Sight Words," simple emotional recognition, and
+                        large, clear typefaces. Perfect for early readers building confidence.</p>
+                    <div
+                        style="margin-top: 1rem; font-size: 0.9rem; background: #EEF2FF; padding: 0.5rem; border-radius: 8px;">
+                        Topics: Farm, Family, Colors, Shapes
+                    </div>
+                </div>
+
+                <!-- Age 8-10 -->
+                <div class="age-card">
+                    <span class="age-icon">🚀</span>
+                    <h3 class="age-title">Hero Mode</h3>
+                    <p style="font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">Ages 8 – 10</p>
+                    <p class="age-desc">Introduces critical thinking, logic patterns, and compound vocabulary. These
+                        puzzles challenge kids to "decode" the world around them.</p>
+                    <div
+                        style="margin-top: 1rem; font-size: 0.9rem; background: #EEF2FF; padding: 0.5rem; border-radius: 8px;">
+                        Topics: Space, Science, Emotions, School
+                    </div>
+                </div>
+
+                <!-- Age 11-13 -->
+                <div class="age-card">
+                    <span class="age-icon">🎓</span>
+                    <h3 class="age-title">Master Mode</h3>
+                    <p style="font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">Ages 11 – 13</p>
+                    <p class="age-desc">Pre-teen level logic. Complex word associations, abstract concepts (like
+                        "Integrity" or "Innovation"), and sharper brain teasers.</p>
+                    <div
+                        style="margin-top: 1rem; font-size: 0.9rem; background: #EEF2FF; padding: 0.5rem; border-radius: 8px;">
+                        Topics: Careers, Tech, Psychology, History
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT SHOWCASE -->
+    <section class="section-white">
+        <div class="wrapper">
+            <h2>Glorious Features That Make You Look Like a Pro 🌟</h2>
+
+            <div
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; align-items: center;">
+                <div>
+                    <h3>1. The "Safety First" Word Vault</h3>
+                    <p>We hand-picked 1,500+ words. No violence. No controversial terms. Just pure, wholesome,
+                        educational content. You will never have to worry about getting a 1-star review for an
+                        "inappropriate" word.</p>
+                </div>
+                <div>
+                    <!-- Placeholder graphic for 'Safe' -->
+                    <div
+                        style="background: #ECFDF5; padding: 2rem; border-radius: 20px; text-align: center; color: #047857; font-weight: 800; font-size: 1.5rem;">
+                        ✅ 100% Kid-Safe<br>✅ Teacher Approved<br>✅ Zero Risk
+                    </div>
+                </div>
+            </div>
+
+            <div
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 4rem; align-items: center;">
+                <div style="order: 2;">
+                    <h3>2. "Instant Answer" Tech</h3>
+                    <p>Do you know what parents hate most? Buying a puzzle book with NO ANSWERS. It makes them feel
+                        helpless when their kid asks for help.</p>
+                    <p>Our engine automatically generates a perfectly matching Answer Key page for every single puzzle
+                        you create. It takes 0 extra seconds.</p>
+                </div>
+                <div style="order: 1;">
+                    <div
+                        style="background: #EFF6FF; padding: 2rem; border-radius: 20px; text-align: center; color: #1E40AF; font-weight: 800; font-size: 1.5rem;">
+                        Page 1: Puzzle 🧩<br>
+                        Page 2: Solution 🔑<br>
+                        (Automatic!)
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- SOCIAL PROOF -->
-    <section style="background: #F8FAFC; padding: 5rem 0;">
-        <div class="wrapper">
-            <h2 style="text-align: center;">See What Real Users Are Saying</h2>
-            <div class="proof-grid">
-                <!-- CORRECT GITHUB RAW LINKS (Space encoded as %20) -->
-                <img src="https://raw.githubusercontent.com/maitriukawala-sketch/puzzle-sales-page/refs/heads/main/review%201.png"
-                    alt="Review 1" style="border: 1px solid #e2e8f0; border-radius: 10px;">
-                <img src="https://raw.githubusercontent.com/maitriukawala-sketch/puzzle-sales-page/refs/heads/main/review%202.png"
-                    alt="Review 2" style="border: 1px solid #e2e8f0; border-radius: 10px;">
-            </div>
+    <section class="section-gray">
+        <div class="wrapper text-center">
+            <h2>Real Creators Are Crushing It 💸</h2>
+            <p>Don't take our word for it. Here is what early beta testers are saying:</p>
+
+            <img src="https://raw.githubusercontent.com/maitriukawala-sketch/puzzle-sales-page/main/review%201.png"
+                class="proof-img" alt="Customer Review 1">
+            <img src="https://raw.githubusercontent.com/maitriukawala-sketch/puzzle-sales-page/main/review%202.png"
+                class="proof-img" alt="Customer Review 2">
         </div>
     </section>
 
     <!-- FAQ -->
-    <section style="background: #fff; padding: 5rem 0;">
+    <section class="section-white">
         <div class="wrapper" style="max-width: 800px;">
-            <h2 style="text-align: center;">Frequently Asked Questions</h2>
+            <h2>Frequently Asked Questions</h2>
 
-            <details style="margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
-                <summary style="cursor: pointer; font-weight: 700; font-size: 1.2rem;">Is this a monthly subscription?
-                </summary>
-                <p style="margin-top: 0.5rem; color: #475569;">No! You pay once and get unlimited access. No hidden
-                    fees.</p>
-            </details>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="margin-bottom: 0.5rem; color: var(--primary);">Q: Is this a monthly fee?</h4>
+                <p>Absolutely NOT. We hate subscriptions as much as you do. You pay once, and you own the current
+                    version forever.</p>
+            </div>
 
-            <details style="margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
-                <summary style="cursor: pointer; font-weight: 700; font-size: 1.2rem;">Do I need to install anything?
-                </summary>
-                <p style="margin-top: 0.5rem; color: #475569;">No, it runs in your browser. However, it's a client-side
-                    tool, meaning you can download the HTML file and run it offline too!</p>
-            </details>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="margin-bottom: 0.5rem; color: var(--primary);">Q: Do I need to be "Tech Savvy"?</h4>
+                <p>If you can click a mouse button, you are over-qualified. We removed all the complex settings. You
+                    just choose a Theme and click "Generate."</p>
+            </div>
 
-            <details style="margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
-                <summary style="cursor: pointer; font-weight: 700; font-size: 1.2rem;">Can I sell the files on Amazon
-                    KDP?</summary>
-                <p style="margin-top: 0.5rem; color: #475569;">Yes! You have full commercial rights to the PUZZLES you
-                    generate. (You cannot resell the software itself).</p>
-            </details>
-        </div>
-    </section>
-
-    <!-- FINAL OFFER -->
-    <section id="offer"
-        style="background: linear-gradient(135deg, #4F46E5 0%, #312E81 100%); padding: 6rem 0; color: #fff;">
-        <div class="wrapper">
-            <div class="price-box">
-                <div
-                    style="position: absolute; top: -20px; right: -20px; background: #EF4444; color: #fff; padding: 10px 20px; transform: rotate(10deg); font-weight: 900; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
-                    SAVE $76 TODAY</div>
-                <h2 style="color: #0F172A; text-align: center;">The "Brain-Booster" Launch Deal</h2>
-
-                <div style="text-align: center; margin: 2rem 0;">
-                    <span style="font-size: 1.5rem; color: #94A3B8; text-decoration: line-through;">Total Value:
-                        $97</span><br>
-                    <span style="font-size: 6rem; font-weight: 900; color: #0F172A; line-height: 1;">$21</span><br>
-                    <span style="color: #0F172A; font-weight: 700;">ONE-TIME PAYMENT</span>
-                </div>
-
-                <a href="#" class="btn" style="width: 100%; text-align: center;">Get Instant Access Now</a>
-
-                <div style="text-align: center; margin-top: 2rem; color: #64748B;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Stripe_Logo%2C_revised_2016.svg/2560px-Stripe_Logo%2C_revised_2016.svg.png"
-                        style="height: 30px; margin: 0 auto 10px; opacity: 0.5;">
-                    <p>🔒 100% Secure Checkout</p>
-                </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="margin-bottom: 0.5rem; color: var(--primary);">Q: Can I sell these on Etsy?</h4>
+                <p>Yes! Educational printables are HUGE on Etsy. Teachers buy them for classrooms, and homeschooling
+                    parents buy them for daily activities.</p>
             </div>
         </div>
     </section>
 
-    <footer style="background: #0F172A; color: #64748B; padding: 4rem 0; text-align: center; font-size: 0.9rem;">
-        <p>&copy; 2026 Puzzle Soft. All Rights Reserved.</p>
-        <p>Earnings Disclaimer: Results vary. Creating books requires effort. This tool makes it easier, but you must
-            still do the work.</p>
-    </footer>
+    <!-- PRICING / CLOSE -->
+    <section id="buy-now"
+        style="background: linear-gradient(135deg, #1E1B4B 0%, #312E81 100%); padding: 6rem 0; color: #fff;">
+        <div class="wrapper">
+            <div class="price-panel">
+                <div class="price-badge">SAVE $70</div>
+                <h2 style="color: #0F172A; margin-top: 0;">Get The Engine Today</h2>
+                <p style="color: #64748B;">Join the ranks of profitable puzzle publishers.</p>
+
+                <div
+                    style="display: flex; justify-content: center; gap: 1rem; margin: 2rem 0; text-align: left; display: inline-block;">
+                    <div style="margin-bottom: 0.5rem; color: #0F172A;">✅ Unlimited Puzzle Generation</div>
+                    <div style="margin-bottom: 0.5rem; color: #0F172A;">✅ 50+ Premium Themes</div>
+                    <div style="margin-bottom: 0.5rem; color: #0F172A;">✅ Full Commercial Rights</div>
+                    <div style="margin-bottom: 0.5rem; color: #0F172A;">✅ 3-Age Intelligence Modes</div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <span style="font-size: 5rem; font-weight: 900; color: #0F172A; line-height: 1;">$21</span>
+                    <br><span style="text-transform: uppercase; color: #64748B; font-weight: 700;">One Time
+                        Payment</span>
+                </div>
+
+                <a href="#" class="btn">Start Creating Now</a>
+            </div>
+
+            <div class="text-center" style="margin-top: 3rem; opacity: 0.7;">
+                <p>Questions? Contact support@puzzleengine.com</p>
+                <p style="font-size: 0.8rem;">Disclaimer: We offer software to help you create books. We do not
+                    guarantee income. Your results depend on your work ethic and marketing.</p>
+            </div>
+        </div>
+    </section>
 
 </body>
 
