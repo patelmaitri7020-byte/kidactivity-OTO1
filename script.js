@@ -811,7 +811,7 @@ function renderRiddles(theme, level) {
     elements.cardTitle.innerText = "Riddle Master";
     const container = document.createElement('div');
     container.className = "w-full space-y-12 mt-12 px-6";
-    let riddleList = RIDDLES; // Use the imported RIDDLES constant
+    let riddleList = RIDDLES_FALLBACK; // Use the internal fallback list since external RIDDLES might be missing
 
     riddleList.slice(0, 3).forEach((rid, i) => {
         const item = document.createElement('div');
