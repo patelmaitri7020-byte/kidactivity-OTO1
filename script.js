@@ -476,7 +476,7 @@ const MASCOT_MESSAGES = [
 function init() {
     initElements();
     setupEventListeners();
-    if (elements.puzzleInput) elements.puzzleInput.value = "Animals";
+    // Default text removed as per user request
     setTimeout(generatePuzzle, 500);
 }
 
