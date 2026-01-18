@@ -532,7 +532,28 @@ function generatePuzzle() {
     let theme = "Custom";
 
     // 1. Check if input is a direct Topic Match (e.g. "Space", "Animals")
-    const topicMatch = Object.keys(TOPICS).find(t => t.toLowerCase() === rawInput.toLowerCase());
+    let topicMatch = Object.keys(TOPICS).find(t => t.toLowerCase() === rawInput.toLowerCase());
+
+    // 2. SMART THEME DETECTION: Check if the input WORDS match any known topic content
+    if (!topicMatch && rawInput.length > 0) {
+        // Break input into words
+        const inputWords = rawInput.toLowerCase().split(/[,\s]+/).map(w => w.trim()).filter(w => w.length > 2);
+        // Search through all themes to find a match
+        for (const [tKey, tLevels] of Object.entries(TOPICS)) {
+            // Check all levels (Explorer, Hero, Master)
+            const allTopicWords = [
+                ...(tLevels["Explorer"] || []),
+                ...(tLevels["Hero"] || []),
+                ...(tLevels["Master"] || [])
+            ].map(w => w.toLowerCase());
+
+            // If any input word is found in this topic's list, auto-select this theme
+            if (inputWords.some(iw => allTopicWords.includes(iw))) {
+                topicMatch = tKey;
+                break; // Found a match!
+            }
+        }
+    }
 
     if (topicMatch) {
         theme = topicMatch;
