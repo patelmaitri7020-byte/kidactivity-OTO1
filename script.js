@@ -529,49 +529,45 @@ function classifyTheme(input) {
 function generatePuzzle() {
     const rawInput = elements.puzzleInput.value.trim();
     let words = [];
-    let theme = "Custom";
+    let theme = "Custom"; // Default to Custom
 
-    // 1. Check if input is a direct Topic Match (e.g. "Space", "Animals")
-    let topicMatch = Object.keys(TOPICS).find(t => t.toLowerCase() === rawInput.toLowerCase());
+    // 1. Direct Topic Match (User typed "Space" or "Animals")
+    const exactTopicMatch = Object.keys(TOPICS).find(t => t.toLowerCase() === rawInput.toLowerCase());
 
-    // 2. SMART THEME DETECTION: Check if the input WORDS match any known topic content
-    if (!topicMatch && rawInput.length > 0) {
-        // Break input into words
-        const inputWords = rawInput.toLowerCase().split(/[,\s]+/).map(w => w.trim()).filter(w => w.length > 2);
-        // Search through all themes to find a match
-        for (const [tKey, tLevels] of Object.entries(TOPICS)) {
-            // Check all levels (Explorer, Hero, Master)
-            const allTopicWords = [
-                ...(tLevels["Explorer"] || []),
-                ...(tLevels["Hero"] || []),
-                ...(tLevels["Master"] || [])
-            ].map(w => w.toLowerCase());
+    if (exactTopicMatch) {
+        // User asked for a Theme -> LOAD PRESET CONTENT
+        theme = exactTopicMatch;
+        let level = "Explorer";
+        if (currentState.ageGroup === '8-10') level = "Hero";
+        if (currentState.ageGroup === '11-13') level = "Master";
+        words = [...TOPICS[theme][level]];
+    } else {
+        // User typed Custom Words (e.g. "Rocket, Lion, Pizza") -> USE THEIR WORDS
+        if (rawInput.length > 0) {
+            words = rawInput.split(/[,\s]+/).map(w => w.trim()).filter(w => w.length > 0);
+        }
 
-            // If any input word is found in this topic's list, auto-select this theme
-            if (inputWords.some(iw => allTopicWords.includes(iw))) {
-                topicMatch = tKey;
-                break; // Found a match!
+        // Fallback if empty (no exact match, no custom words)
+        if (words.length === 0) {
+            theme = "Animals";
+            words = [...TOPICS["Animals"]["Explorer"]];
+        } else {
+            // SMART DETECTION: Can we guess the theme from their words?
+            // This enables "Secret Message" riddles even for custom lists!
+            const inputWordsLower = words.map(w => w.toLowerCase());
+            for (const [tKey, tLevels] of Object.entries(TOPICS)) {
+                const allTopicWords = [
+                    ...(tLevels["Explorer"] || []),
+                    ...(tLevels["Hero"] || []),
+                    ...(tLevels["Master"] || [])
+                ].map(w => w.toLowerCase());
+
+                if (inputWordsLower.some(iw => allTopicWords.includes(iw))) {
+                    theme = tKey; // Use this theme for metadata (colors, riddles)
+                    break;
+                }
             }
         }
-    }
-
-    if (topicMatch) {
-        theme = topicMatch;
-        let level = "Explorer";
-        if (currentState.ageGroup === '8-10') level = "Hero";
-        if (currentState.ageGroup === '11-13') level = "Master";
-        words = [...TOPICS[theme][level]];
-    } else if (rawInput.length > 0) {
-        // 2. Use User Input Strictly (Comma separated)
-        words = rawInput.split(',').map(w => w.trim()).filter(w => w);
-        if (words.length === 0) words = [...TOPICS["Animals"]["Explorer"]];
-    } else {
-        // 3. Default Fallback
-        theme = "Animals";
-        let level = "Explorer";
-        if (currentState.ageGroup === '8-10') level = "Hero";
-        if (currentState.ageGroup === '11-13') level = "Master";
-        words = [...TOPICS[theme][level]];
     }
 
     currentState.theme = theme;
